@@ -1,10 +1,10 @@
 FROM af139784/r-ver:4.0.3
 
 ARG RSTUDIO_VERSION
-ENV RSTUDIO_VERSION=${RSTUDIO_VERSION:-1.3.1093}
+ENV RSTUDIO_VERSION=${RSTUDIO_VERSION:-1.4.1103}
 ARG S6_VERSION
 ARG PANDOC_TEMPLATES_VERSION
-ENV S6_VERSION=${S6_VERSION:-v1.21.7.0}
+ENV S6_VERSION=${S6_VERSION:-v2.2.0.1}
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
 ENV PATH=/usr/lib/rstudio-server/bin:$PATH
 ENV PANDOC_TEMPLATES_VERSION=${PANDOC_TEMPLATES_VERSION:-2.11}
@@ -34,7 +34,8 @@ RUN apt-get update \
     libllvm3.8 \
     libobjc4 \
     libgc1c2 \
-  && if [ -z "$RSTUDIO_VERSION" ]; then RSTUDIO_URL="https://www.rstudio.org/download/latest/stable/server/debian9_64/rstudio-server-latest-amd64.deb"; else RSTUDIO_URL="http://download2.rstudio.org/server/debian9/x86_64/rstudio-server-${RSTUDIO_VERSION}-amd64.deb"; fi \
+    libpq5 \
+  && if [ -z "$RSTUDIO_VERSION" ]; then RSTUDIO_URL="https://www.rstudio.org/download/latest/stable/server/debian9_64/rstudio-server-latest-amd64.deb"; else RSTUDIO_URL="https://download2.rstudio.org/server/debian9/x86_64/rstudio-server-${RSTUDIO_VERSION}-amd64.deb"; fi \
   && wget -q $RSTUDIO_URL \
   && dpkg -i rstudio-server-*-amd64.deb \
   && rm rstudio-server-*-amd64.deb \
