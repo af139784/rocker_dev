@@ -1,4 +1,4 @@
-FROM af139784/tidyverse:4.0.3
+FROM af139784/tidyverse:4.0.4
 
 # Version-stable CTAN repo from the tlnet archive at texlive.info, used in the
 # TinyTeX installation: chosen as the frozen snapshot of the TeXLive release

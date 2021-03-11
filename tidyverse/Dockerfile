@@ -1,4 +1,4 @@
-FROM af139784/rstudio:4.0.3
+FROM af139784/rstudio:4.0.4
 
 RUN echo 'deb http://deb.debian.org/debian stretch-backports main' > /etc/apt/sources.list.d/backports.list
 RUN apt update 
