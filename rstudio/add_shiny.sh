@@ -16,6 +16,7 @@ if [ "$ADD" == "shiny" ]; then
     rm -f version.txt ss-latest.deb && \
     install2.r -e --skipinstalled shiny rmarkdown && \
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
+    cp -f /etc/rstudio/shiny-server.conf /etc/shiny-server/shiny-server.conf && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /var/log/shiny-server && \
     chown shiny.shiny /var/log/shiny-server && \
